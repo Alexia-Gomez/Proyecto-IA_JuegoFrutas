@@ -6,6 +6,7 @@ signal score_changed(total: int)
 signal lives_changed(lives: int)
 signal time_changed(seconds: float)
 signal combo_changed(combo: int)
+signal vivo_changed(is_running: bool)
 
 const MAX_LIVES := 3
 const INTERVALO_TIEMPO := 0.25
@@ -70,6 +71,7 @@ func _set_lives(value: int) -> void:
 func end_run() -> void:
 	if lives == 0:
 		is_running = false
+		print("Moriste")
 
 
 func reset_run() -> void:
