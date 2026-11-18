@@ -43,12 +43,14 @@ func _ready() -> void:
 
 
 func _on_timer_timeout() -> void:
-	
-	if randf() < prob_bomb:
-		spawn_bomb()
-	else:
-		spawn_fruit()
-	
+	# Terminada la partida no aparecen más objetos, pero el timer sigue vivo
+	# para reanudarse en cuanto se reinicie.
+	if Game.is_running:
+		if randf() < prob_bomb:
+			spawn_bomb()
+		else:
+			spawn_fruit()
+
 	_schedule_next()
 
 
