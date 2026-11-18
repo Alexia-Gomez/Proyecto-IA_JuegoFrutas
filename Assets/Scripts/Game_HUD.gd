@@ -9,6 +9,8 @@ const CORAZON_VACIO: Texture2D = preload("res://Assets/Art/Heart/Corazon_vacio.p
 @onready var _corazones: HBoxContainer = %Corazones
 @onready var _combo: Label = %Combo
 @onready var _corazon_lleno: TextureRect = %Corazon_lleno
+@onready var _game_over: Control = %GameOver
+@onready var _reiniciar: Button = %Reiniciar
 
 
 @export var color_lleno := Color("e63946")
@@ -22,10 +24,14 @@ func _ready() -> void:
 	Game.lives_changed.connect(_actualizar_vidas)
 	Game.time_changed.connect(_actualizar_tiempo)
 	Game.combo_changed.connect(_actualizar_combo)
+	Game.game_over.connect(_mostrar_game_over)
+	Game.vivo_changed.connect(_on_vivo_changed)
+	_reiniciar.pressed.connect(_on_reiniciar_pressed)
 	_actualizar_puntos(Game.score)
 	_actualizar_vidas(Game.lives)
 	_actualizar_combo(Game.combo)
 	_actualizar_tiempo(Game.time_played)
+	_game_over.visible = not Game.is_running
 
 
 func _actualizar_puntos(total: int) -> void:
@@ -46,3 +52,16 @@ func _actualizar_vidas(vidas: int) -> void:
 func _actualizar_combo(combo: int) -> void:
 	var combo_total := int(combo)
 	_combo.text = "COMBOx %02d" % combo
+
+
+func _mostrar_game_over() -> void:
+	_game_over.visible = true
+	_reiniciar.grab_focus()
+
+
+func _on_vivo_changed(is_running: bool) -> void:
+	_game_over.visible = not is_running
+
+
+func _on_reiniciar_pressed() -> void:
+	Game.reset_run()

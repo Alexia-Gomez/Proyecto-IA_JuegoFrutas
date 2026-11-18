@@ -7,6 +7,7 @@ signal lives_changed(lives: int)
 signal time_changed(seconds: float)
 signal combo_changed(combo: int)
 signal vivo_changed(is_running: bool)
+signal game_over
 
 const MAX_LIVES := 3
 const INTERVALO_TIEMPO := 0.25
@@ -66,15 +67,23 @@ func _set_lives(value: int) -> void:
 		return
 	lives = nuevo
 	lives_changed.emit(lives)
+	if lives == 0:
+		end_run()
 
 
 func end_run() -> void:
-	if lives == 0:
-		is_running = false
-		print("Moriste")
+	if not is_running:
+		return
+	is_running = false
+	print("Moriste")
+	vivo_changed.emit(false)
+	game_over.emit()
 
 
 func reset_run() -> void:
+	# Limpia frutas y bombas que quedaron cayendo de la partida anterior.
+	for objeto in get_tree().get_nodes_in_group("fruits"):
+		objeto.queue_free()
 	score = 0
 	lives = MAX_LIVES
 	time_played = 0.0
@@ -85,3 +94,4 @@ func reset_run() -> void:
 	lives_changed.emit(lives)
 	combo_changed.emit(combo)
 	time_changed.emit(time_played)
+	vivo_changed.emit(true)
