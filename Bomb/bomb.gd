@@ -77,6 +77,8 @@ func _draw() -> void:
 func _on_body_entered(body: Node2D) -> void:
 	if not body.is_in_group("player"):
 		return
-	
+	elif body.is_in_group("player") and Game.lives == 0:
+		Game.end_run()
+		
 	Game.lose_life()
 	queue_free()

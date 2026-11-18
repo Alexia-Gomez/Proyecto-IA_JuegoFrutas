@@ -1,8 +1,10 @@
 [gd_scene format=3 uid="uid://vfa242hxta8s"]
 
-[ext_resource type="Texture2D" uid="uid://bg2bbi63aw6m" path="res://Assets/Art/Fondo/Fondo_Arbol.PNG" id="1_4d5l4"]
 [ext_resource type="PackedScene" uid="uid://cav7wef5a83qq" path="res://Assets/Character/character_body_2d.tscn" id="1_23sli"]
+[ext_resource type="Texture2D" uid="uid://cbj14gmomgjqd" path="res://Assets/Art/Fondo/Cielo.png" id="1_yyxbf"]
+[ext_resource type="Texture2D" uid="uid://b7wofj71lmp8g" path="res://Assets/Art/Fondo/Suelo.png" id="2_xbcx5"]
 [ext_resource type="PackedScene" uid="uid://carhu4ejvgmxb" path="res://Assets/Character/l_side.tscn" id="3_23sli"]
+[ext_resource type="Texture2D" uid="uid://dhx6y6mh6hiob" path="res://Assets/Art/Fondo/Arbol.png" id="3_iqjp2"]
 [ext_resource type="PackedScene" uid="uid://s38e3kocyu6f" path="res://Assets/Character/r_side.tscn" id="4_y0n1t"]
 [ext_resource type="PackedScene" uid="uid://cctxuhgbho740" path="res://Assets/Scene/Game_HUD.tscn" id="5_4d5l4"]
 [ext_resource type="PackedScene" uid="uid://7ywg4gog258x" path="res://Assets/Scene/fruit_spawner.tscn" id="5_spawner"]
@@ -28,10 +30,18 @@ script = SubResource("GDScript_d8v2s")
 [node name="Fondo" type="Sprite2D" parent="." unique_id=168201852]
 position = Vector2(2.9999986, 0)
 scale = Vector2(0.500868, 0.49074075)
-texture = ExtResource("1_4d5l4")
+
+[node name="Cielo" type="Sprite2D" parent="Fondo" unique_id=550741691]
+texture = ExtResource("1_yyxbf")
+
+[node name="Suelo" type="Sprite2D" parent="Fondo" unique_id=1477947623]
+texture = ExtResource("2_xbcx5")
+
+[node name="Arbol" type="Sprite2D" parent="Fondo" unique_id=661630495]
+texture = ExtResource("3_iqjp2")
 
 [node name="CharacterBody2D" parent="." unique_id=1483226975 groups=["player"] instance=ExtResource("1_23sli")]
-position = Vector2(0, 159)
+position = Vector2(-2, 212)
 
 [node name="FruitSpawner" parent="." unique_id=835459315 instance=ExtResource("5_spawner")]
 

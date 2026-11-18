@@ -1,12 +1,11 @@
 [gd_scene format=3 uid="uid://cctxuhgbho740"]
 
 [ext_resource type="Script" uid="uid://bk56w6xfotdaw" path="res://Assets/Scripts/Game_HUD.gd" id="1_gna7f"]
+[ext_resource type="Texture2D" uid="uid://b0tjhamidc5ud" path="res://Assets/Art/Heart/Corazon.png" id="2_vun0a"]
 
 [node name="GameHUD" type="CanvasLayer" unique_id=1890145728]
 layer = 10
 script = ExtResource("1_gna7f")
-color_lleno = null
-color_vacio = null
 
 [node name="Panel" type="PanelContainer" parent="." unique_id=493394729]
 offset_left = 16.0
@@ -50,17 +49,17 @@ layout_mode = 2
 mouse_filter = 2
 theme_override_constants/separation = 6
 
-[node name="Corazon1" type="ColorRect" parent="Panel/Margen/VBox/Corazones" unique_id=435135075]
-custom_minimum_size = Vector2(28, 28)
+[node name="Corazon_lleno" type="TextureRect" parent="Panel/Margen/VBox/Corazones" unique_id=1913614678]
+unique_name_in_owner = true
 layout_mode = 2
-mouse_filter = 2
+texture = ExtResource("2_vun0a")
 
-[node name="Corazon2" type="ColorRect" parent="Panel/Margen/VBox/Corazones" unique_id=1719799482]
-custom_minimum_size = Vector2(28, 28)
+[node name="Corazon_lleno2" type="TextureRect" parent="Panel/Margen/VBox/Corazones" unique_id=156420371]
+unique_name_in_owner = true
 layout_mode = 2
-mouse_filter = 2
+texture = ExtResource("2_vun0a")
 
-[node name="Corazon3" type="ColorRect" parent="Panel/Margen/VBox/Corazones" unique_id=261780068]
-custom_minimum_size = Vector2(28, 28)
+[node name="Corazon_lleno3" type="TextureRect" parent="Panel/Margen/VBox/Corazones" unique_id=1911443729]
+unique_name_in_owner = true
 layout_mode = 2
-mouse_filter = 2
+texture = ExtResource("2_vun0a")

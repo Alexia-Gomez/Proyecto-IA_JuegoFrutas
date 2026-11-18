@@ -25,7 +25,7 @@ extends Node2D
 
 var _timer: Timer
 var _container: Node
-var prob_bomb: float = 0.1
+var prob_bomb: float = 0.8
 
 
 func _ready() -> void:
