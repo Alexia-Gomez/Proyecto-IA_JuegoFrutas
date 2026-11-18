@@ -56,7 +56,7 @@ def dibujar_deteccion(frame, detection_result):
 class MiCamara:
     """Captura fotogramas, detecta la mano y envía su lado a Godot."""
 
-    def __init__(self, indice=0):
+    def __init__(self, indice=1):
         if not MODEL_FILE.exists():
             raise FileNotFoundError(f"No se encontró el modelo: {MODEL_FILE}")
 
@@ -73,7 +73,7 @@ class MiCamara:
         base_options = python.BaseOptions(model_asset_path=str(MODEL_FILE))
         options = vision.HandLandmarkerOptions(
             base_options=base_options,
-            num_hands=2,
+            num_hands=1,
             min_hand_detection_confidence=0.5,
             min_tracking_confidence=0.5,
             running_mode=vision.RunningMode.VIDEO,

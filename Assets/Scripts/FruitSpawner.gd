@@ -1,6 +1,8 @@
 extends Node2D
 ## Genera frutas en una X aleatoria por encima de la pantalla y las deja caer.
 
+var NARANJA: Texture2D = load("res://Assets/Art/Fruit/Naranja.png")
+
 ## Escena de fruta a instanciar.
 @export var fruit_scene: PackedScene = preload("res://Fruits/fruit.tscn")
 @export var bomb_scene: PackedScene = preload("res://Bomb/Bomb.tscn")
@@ -25,7 +27,7 @@ extends Node2D
 
 var _timer: Timer
 var _container: Node
-var prob_bomb: float = 0.8
+var prob_bomb: float = 0.0
 
 
 func _ready() -> void:
@@ -136,7 +138,7 @@ func _pick_preset_bomb() -> Dictionary:
 func _default_presets() -> Array[Dictionary]:
 	return [
 		{"name": "manzana", "color": Color("e63946"), "points": 10, "radius": 24.0, "speed": 170.0},
-		{"name": "naranja", "color": Color("f4a300"), "points": 15, "radius": 26.0, "speed": 150.0},
+		{"name": "naranja", "color": Color("f4a300"), "points": 15, "Image": NARANJA, "speed": 150.0},
 		{"name": "limon", "color": Color("f7e02e"), "points": 20, "radius": 20.0, "speed": 220.0},
 		{"name": "uva", "color": Color("8e44ad"), "points": 25, "radius": 18.0, "speed": 240.0},
 		{"name": "sandia", "color": Color("2eb872"), "points": 30, "radius": 30.0, "speed": 130.0},
